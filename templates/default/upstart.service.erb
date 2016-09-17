@@ -1,0 +1,13 @@
+description "<%= @name %>"
+
+start on (filesystem and net-device-up IFACE=lo)
+stop on runlevel [!2345]
+
+respawn
+respawn limit 10 5
+<%- @environment.each do |key, val| -%>
+env <%= key %>="<%= val %>"
+<%- end -%>
+setuid <%= @service_user %>
+reload signal HUP
+exec <%= @command %>
