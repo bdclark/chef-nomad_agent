@@ -15,6 +15,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+node.default['nomad_agent']['config']['server']['enabled'] = true
+node.default['nomad_agent']['config']['client']['enabled'] = false
+
 include_recipe 'nomad_agent::service_user' if node['nomad_agent']['manage_service_user']
 
 nomad_agent_install node['nomad_agent']['version']

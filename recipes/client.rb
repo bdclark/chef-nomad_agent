@@ -15,6 +15,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+node.default['nomad_agent']['config']['server']['enabled'] = false
+node.default['nomad_agent']['config']['client']['enabled'] = true
+
 nomad_agent_install node['nomad_agent']['version']
 
 nomad_agent_config ::File.join(node['nomad_agent']['config_dir'], 'nomad.json') do

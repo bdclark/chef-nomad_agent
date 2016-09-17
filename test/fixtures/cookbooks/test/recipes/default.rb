@@ -1,7 +1,7 @@
 
-node.default['nomad_agent']['config']['server']['enabled'] = true
-node.default['nomad_agent']['config']['server']['bootstrap_expect'] = 1
-node.default['nomad_agent']['config']['client']['enabled'] = true
+node.override['nomad_agent']['config']['server']['enabled'] = true
+node.override['nomad_agent']['config']['server']['bootstrap_expect'] = 1
+node.override['nomad_agent']['config']['client']['enabled'] = true
 
 include_recipe 'apt'
 
