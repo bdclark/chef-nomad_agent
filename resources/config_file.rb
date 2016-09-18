@@ -18,19 +18,24 @@
 property :path, String, name_property: true
 property :user, String, default: 'root'
 property :group, String, default: lazy { node['root_group'] }
-property :general_config, Hash, required: true
-property :server_config, Hash
-property :client_config, Hash
-property :consul_config, Hash
-property :atlas_config, Hash
+property :config, Hash, required: true
 
 default_action :create
 
 action :create do
-  nomad_agent_config_file new_resource.path do
-    config the_config
-    user new_resource.user
+  directory ::File.dirname(new_resource.path) do
+    recursive true
+    owner 'root'
+    group node['root_group']
+    mode '0755'
+    not_if { ::File.dirname(new_resource.path) == '/etc' }
+  end
+
+  file new_resource.path do
+    owner new_resource.user
     group new_resource.group
+    mode '0640'
+    content JSON.pretty_generate(new_resource.config, quirks_mode: true) + "\n"
   end
 end
 
@@ -43,14 +48,5 @@ end
 action_class do
   def whyrun_supported?
     true
-  end
-
-  def the_config
-    config = general_config.to_h
-    config['server'] = server_config if server_config && !server_config.empty?
-    config['client'] = client_config if client_config && !client_config.empty?
-    config['consul'] = consul_config if consul_config && !consul_config.empty?
-    config['atlas'] = atlas_config if atlas_config && !atlas_config.empty?
-    config
   end
 end

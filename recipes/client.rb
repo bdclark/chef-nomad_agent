@@ -15,19 +15,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-node.default['nomad_agent']['config']['server']['enabled'] = false
-node.default['nomad_agent']['config']['client']['enabled'] = true
+node.default['nomad_agent']['client_config']['enabled'] = true
 
-nomad_agent_install node['nomad_agent']['version']
-
-nomad_agent_config ::File.join(node['nomad_agent']['config_dir'], 'nomad.json') do
-  config node['nomad_agent']['config']
-  notifies :restart, 'nomad_agent_service[nomad]', :delayed
-end
-
-nomad_agent_service 'nomad' do
-  config_dir node['nomad_agent']['config_dir']
-  data_dir node['nomad_agent']['config']['data_dir']
-  restart_on_update node['nomad_agent']['restart_on_update']
-  action [:enable, :start]
-end
+include_recipe 'nomad_agent'

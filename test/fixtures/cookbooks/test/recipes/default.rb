@@ -1,7 +1,7 @@
 
-node.override['nomad_agent']['config']['server']['enabled'] = true
-node.override['nomad_agent']['config']['server']['bootstrap_expect'] = 1
-node.override['nomad_agent']['config']['client']['enabled'] = true
+node.default['nomad_agent']['server_config']['enabled'] = true
+node.default['nomad_agent']['server_config']['bootstrap_expect'] = 1
+node.override['nomad_agent']['client_config']['enabled'] = true
 
 include_recipe 'apt'
 
@@ -11,8 +11,7 @@ docker_service 'default' do
   action [:create, :start]
 end
 
-# use client recipe to run as root
-include_recipe 'nomad_agent::client'
+include_recipe 'nomad_agent'
 
 ruby_block 'nomad-stabilize' do
   block do
