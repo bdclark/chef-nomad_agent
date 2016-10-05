@@ -17,7 +17,10 @@
 
 include_recipe 'nomad_agent::service_user' if node['nomad_agent']['manage_service_user']
 
-nomad_agent_install node['nomad_agent']['version']
+nomad_agent_install node['nomad_agent']['version'] do
+  url node['nomad_agent']['url'] if node['nomad_agent']['url']
+  checksum node['nomad_agent']['checksum'] if node['nomad_agent']['checksum']
+end
 
 nomad_agent_config ::File.join(node['nomad_agent']['config_dir'], 'nomad.json') do
   general_config node['nomad_agent']['general_config']

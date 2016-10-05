@@ -1,6 +1,10 @@
 
 default['nomad_agent']['version'] = '0.4.1'
 
+# override default url/checksum
+default['nomad_agent']['zip_url'] = nil
+default['nomad_agent']['zip_checksum'] = nil
+
 default['nomad_agent']['manage_service_user'] = false
 default['nomad_agent']['service_user'] = nil
 default['nomad_agent']['service_group'] = nil
