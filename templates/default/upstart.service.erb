@@ -9,5 +9,6 @@ respawn limit 10 5
 env <%= key %>="<%= val %>"
 <%- end -%>
 setuid <%= @service_user %>
+limit nofile 65536 65536
 reload signal HUP
 exec <%= @command %>
