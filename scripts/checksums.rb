@@ -2,7 +2,17 @@
 
 require 'open-uri'
 
-versions = %w(0.2.0 0.2.1 0.2.3 0.3.0 0.3.1 0.3.2 0.4.0 0.4.1 0.5.0 0.5.1)
+versions = []
+checksum_list = []
+
+open("https://releases.hashicorp.com/nomad/index.html") do |u|
+  content = u.read
+  content.each_line do |line|
+    if match = line.match(/^\s*<a.*?>nomad_(.*?)<\/a>$/)
+      versions << match.captures.first
+    end
+  end
+end
 
 versions.each do |v|
   url = "https://releases.hashicorp.com/nomad/#{v}/nomad_#{v}_SHA256SUMS"
@@ -11,10 +21,13 @@ versions.each do |v|
       content = u.read
       content.each_line do |line|
         checksum, fname = line.gsub(/\s+/, ' ').strip.split(' ')
-        puts "'#{fname}' => '#{checksum}',"
+        next if fname.include? 'windows'
+        checksum_list << "'#{fname}' => '#{checksum}'"
       end
     end
   rescue OpenURI::HTTPError
     next
   end
 end
+
+puts checksum_list.join(",\n")

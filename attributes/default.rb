@@ -1,5 +1,5 @@
 
-default['nomad_agent']['version'] = '0.5.1'
+default['nomad_agent']['version'] = '0.5.4'
 
 # override default url/checksum
 default['nomad_agent']['zip_url'] = nil
