@@ -19,12 +19,12 @@ module NomadAgent
   module Helpers
     def checksums
       {
-        'nomad_0.5.6_darwin_amd64.zip' => '0c8c4212cdfd952d8c81b16ba69117d6a0c796188b27158828e4f9920cecd80f',
-        'nomad_0.5.6_linux_386.zip' => '89fffefb7e1b498651f3823f85c784fd1a1fcd49ef9fb04d66010eb2efb2c861',
-        'nomad_0.5.6_linux_amd64-lxc.zip' => 'b5518fca1bb91e6fc8ada0a9ad83c4535eb4ad5fbceb6bf5ba85644808f498cf',
-        'nomad_0.5.6_linux_amd64.zip' => 'd720e24869543b75c1a1ed50bf5ad80f4c27981bb86a6fe432dc8eb076475c91',
-        'nomad_0.5.6_linux_arm.zip' => 'ba0c62a8d17c86b13c33242c0270d2df0d8d176b2d4e8a6213124a8e241b58e9',
-        'nomad_0.5.6_linux_arm64.zip' => 'd3d2a9c60c622e3c2df67c01bde1eb4b0ef4705b5ebb4e87d3b5ebb55601701c',
+        'nomad_0.5.6_darwin_amd64.zip' => '235ddfd4c18c9875ae78607f9611a84ddf425a184fcb2359c734e7d117379ab3',
+        'nomad_0.5.6_linux_386.zip' => '5ec9d890ffa8ca338d53b3aeeab793dd1acef0670b381adcc04806c059ff5369',
+        'nomad_0.5.6_linux_amd64-lxc.zip' => 'ccf090208a681066838bf85f3282737c0435e37bcb8d24e07b1a4edc91f34d97',
+        'nomad_0.5.6_linux_amd64.zip' => '3f5210f0bcddf04e2cc04b14a866df1614b71028863fe17bcdc8585488f8cb0c',
+        'nomad_0.5.6_linux_arm.zip' => 'a4fe93f95e4c53b23b8feb2a714565cf97025b2df6669f1a1558fc664fcd4993',
+        'nomad_0.5.6_linux_arm64.zip' => '073f4b0f7cd86450837ac0735f62c316206edf940cb97b53608df3d0ce4aa91d',
         'nomad_0.5.6-rc1_darwin_amd64.zip' => 'a921302bf5b5631063df2a0abbd70cdeeefec44461123bc35fce1447f9db2d87',
         'nomad_0.5.6-rc1_linux_386.zip' => 'dc0bf8c056536050297a744fa1b2a020d64294c19602522e3e9739d0fc9ca089',
         'nomad_0.5.6-rc1_linux_amd64-lxc.zip' => '54fb3ad7930f205eef3c1ea67b6b7a52aa9dd7a0602dab8c4878d5973ae6760b',

@@ -4,6 +4,6 @@ maintainer_email 'brian@clark.zone'
 license          'apache2'
 description      'Installs/Configures Hashicorp Nomad'
 long_description 'Installs/Configures Hashicorp Nomad'
-version          '0.2.4'
+version          '0.2.5'
 
 depends 'compat_resource'
